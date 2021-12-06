@@ -1,5 +1,6 @@
 package hiepnh.noticemanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,7 @@ public class UserEntity {
     private String age;
     @Column(name = "phone")
     private String phone;
+    @JsonIgnore
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
     private List<NoticeEntity> noticeEntities;
 }
