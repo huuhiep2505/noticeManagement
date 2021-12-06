@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "9f7a35a5-20c3-47a6-9abd-d6360f6f2653",
+		"name": "Notice_Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"aaa\",\r\n    \"age\": \"22\",\r\n    \"phone\": \"2222\",\r\n    \"password\" : \"123\",\r\n    \"username\" : \"hiepnh17\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"123\",\r\n  \"username\": \"hiep\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createNotice",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkaWV1bGsiLCJleHAiOjE2Mzg3OTgxMTEsImlhdCI6MTYzODc2MjExMX0.ZHHJfze2NDxFzz7_8vpB-eN3pJKQKXhqMYuxqPlYqAY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "test1",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "test tiep",
+							"type": "text"
+						},
+						{
+							"key": "startDate",
+							"value": "2021-12-10T00:00:00",
+							"type": "text"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-12-23T00:00:00",
+							"type": "text"
+						},
+						{
+							"key": "attachFiles",
+							"type": "file",
+							"src": [
+								"/C:/Users/acer/Desktop/Interview.docx",
+								"/C:/Users/acer/Desktop/Logo_HUTECH.jpg"
+							]
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/notice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllNoticeByUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoaWVwIiwiZXhwIjoxNjM4Nzk4MzM1LCJpYXQiOjE2Mzg3NjIzMzV9.ajnK6UGEgRgd7Tp1Ri-c7keAkjjHQ_otkfgm2BiPOtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/notice/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notice",
+						"user"
+					]
+				},
+				"description": "get all notice by current user based on :\r\n-start date, end date > current date"
+			},
+			"response": []
+		},
+		{
+			"name": "getAllNotice",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoaWVwIiwiZXhwIjoxNjM4Nzk4MzM1LCJpYXQiOjE2Mzg3NjIzMzV9.ajnK6UGEgRgd7Tp1Ri-c7keAkjjHQ_otkfgm2BiPOtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/acer/Desktop/Logo_HUTECH.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/notice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notice"
+					]
+				},
+				"description": "get all notice based on :\r\n- start date > current date"
+			},
+			"response": []
+		},
+		{
+			"name": "getNoticeByID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoaWVwIiwiZXhwIjoxNjM4Nzk4MzM1LCJpYXQiOjE2Mzg3NjIzMzV9.ajnK6UGEgRgd7Tp1Ri-c7keAkjjHQ_otkfgm2BiPOtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/notice/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notice",
+						"21"
+					]
+				},
+				"description": "get notice by ID. Number of view will automatically update + 1 when another username calls the function"
+			},
+			"response": []
+		},
+		{
+			"name": "updateNotice",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoaWVwIiwiZXhwIjoxNjM4Nzk4MzM1LCJpYXQiOjE2Mzg3NjIzMzV9.ajnK6UGEgRgd7Tp1Ri-c7keAkjjHQ_otkfgm2BiPOtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 21,\r\n    \"title\": \"okk\",\r\n    \"content\": \" ok nha\",\r\n    \"startDate\": \"2021-12-22T00:00:00\",\r\n    \"endDate\": \"2021-12-12T00:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/notice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteNotice",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoaWVwIiwiZXhwIjoxNjM4Nzk4MzM1LCJpYXQiOjE2Mzg3NjIzMzV9.ajnK6UGEgRgd7Tp1Ri-c7keAkjjHQ_otkfgm2BiPOtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/notice?id=21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notice"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "21"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
