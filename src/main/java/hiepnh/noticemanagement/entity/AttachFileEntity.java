@@ -24,6 +24,7 @@ public class AttachFileEntity implements Serializable {
     private String name;
 
     @JsonIgnore
-    @Column(name = "notice_id")
-    private Integer noticeId;
+    @ManyToOne
+    @JoinColumn(name = "notice_id")
+    private NoticeEntity noticeId;
 }

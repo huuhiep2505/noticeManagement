@@ -73,6 +73,7 @@ public class NoticeServiceImpl implements NoticeService {
             noticeEntity.setIsActive(true);
             //set attach files
             List<AttachFileEntity> attachFileEntities = saveFile(input.getAttachFiles(), currentDate.getTime());
+            attachFileEntities.forEach(attachFileEntity -> attachFileEntity.setNoticeId(noticeEntity));
             noticeEntity.setAttachFiles(attachFileEntities);
             noticeRepository.save(noticeEntity);
         } else {
